@@ -1,0 +1,57 @@
+---
+cluster: "research"
+form:
+  - singularity_image
+  - bih_cpus
+  - bih_mem
+  - bih_days
+  - bih_partition
+attributes:
+  singularity_image:
+    widget: "select"
+    label: "Singularity Image"
+    help: |
+      The singularity images are based on CentOS 7 with R and RStudio
+      Server. Missing packages? Try to build and use your own miniconda
+      package!
+    options:
+      - [ "singularity-code-server-4.2.0-0.sif", "singularity-code-server-4.2.0-0.sif"  ]
+  bih_cpus:
+    widget: "number_field"
+    label: "Number of cores"
+    value: 2
+    help: Number of cores to allocate.
+    min: 1
+    max: 32
+    step: 1
+  bih_mem:
+    widget: "number_field"
+    label: "Memory [GiB]"
+    value: 4
+    help: Memory to allocate for job.
+    min: 1
+    max: 128
+  bih_days:
+    widget: "number_field"
+    label: "Running time [days]"
+    value: 1
+    help: Number of days to run.
+    min: 1
+    max: 14
+    step: 1
+  bih_partition:
+    widget: select
+    label: "partition to run in"
+    value: "long"
+    help: |
+      - **medium** - at most 7 days available (up to 128 cores in all jobs)
+      - **long** - at most 28 days available (upt o 32 cores in all jobs)
+    options:
+      - [ "medium", "medium" ]
+      - [ "long", "long" ]
+  working_dir:
+    label: "working directory"
+    data-filepicker: true
+    data-target-file-type: dirs  # Valid values are: files, dirs, or both
+    readonly: false
+    help: "Select your project directory; defaults to $HOME"
