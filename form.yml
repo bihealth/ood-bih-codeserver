@@ -6,6 +6,7 @@ form:
   - bih_mem
   - bih_days
   - bih_partition
+  - working_dir
 attributes:
   singularity_image:
     widget: "select"
